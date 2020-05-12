@@ -5,9 +5,9 @@ function [] = confidence_ellipse(mu,sigma, alpha, color)
 %% Sanity checks
 
 % Sigma must be symmetric and PSD
-if  ~ isequal(sigma,sigma')
-   error('Covariance matrix is not symmetric') 
-end
+% if  ~ isequal(sigma,sigma')
+%    error('Covariance matrix is not symmetric') 
+% end
 
 if any(eig(sigma)<=0) || ~isreal(eig(sigma))
     error('Covariance matrix is not positive definite')

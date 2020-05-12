@@ -34,8 +34,8 @@ P = [0, 0, 0, 0;
 
 P_5 = P;
 xhat_5 = xhat;
-for i=1:5
-    xhat_new = A*xhat_5 + B;
+for i=0:5
+    xhat_new = A*xhat_5 + B
     xhat_5 = xhat_new;
     P_new = A*P_5*A.' + Q;
     P_5 = P_new;
@@ -45,8 +45,8 @@ end
 figure(1)
 hold on
 scatter(xhat_5(1), xhat_5(2), 'b', 'filled')
-confidence_ellipse(xhat_5, P_5, 0.1, 'r');
-confidence_ellipse(xhat_5, P_5, 0.05, 'r');
+confidence_ellipse(xhat_5, P_5, 0.9, 'r');
+confidence_ellipse(xhat_5, P_5, 0.95, 'r');
 ylabel('$x_{2}$', 'interpreter', 'latex');
 xlabel('$x_{1}$', 'interpreter', 'latex');
 title('90% and 95% Confidence Intervals for Projectile State')
@@ -56,7 +56,7 @@ axis equal;
 xhat_10 = xhat;
 P_10 = P;
 
-for i=1:10
+for i=0:10
     xhat_new = A*xhat_10 + B;
     xhat_10 = xhat_new;
     P_new = A*P_10*A.' + Q;
@@ -65,7 +65,7 @@ end
 
 xhat_15 = xhat;
 P_15 = P;
-for i=1:15
+for i=0:15
     xhat_new = A*xhat_15 + B;
     xhat_15 = xhat_new;
     P_new = A*P_15*A.' + Q;
@@ -77,13 +77,13 @@ hold on
 axis equal
 
 scatter(xhat_10(1), xhat_10(2), 'k', 'filled')
-confidence_ellipse(xhat_10, P_10, 0.1, 'k');
+confidence_ellipse(xhat_10, P_10, 0.9, 'k');
 ylabel('$x_{2}$', 'interpreter', 'latex');
 xlabel('$x_{1}$', 'interpreter', 'latex');
 title('90% Confidence Interval for Projectile State')
 
 scatter(xhat_15(1), xhat_15(2), 'r', 'filled')
-confidence_ellipse(xhat_15, P_15, 0.1, 'r');
+confidence_ellipse(xhat_15, P_15, 0.9, 'r');
 ylabel('$x_{2}$', 'interpreter', 'latex');
 xlabel('$x_{1}$', 'interpreter', 'latex');
 legend('$\hat{x}_{10|0}$', '$P_{10|0}$', '$\hat{x}_{15|0}$', '$P_{15|0}$', 'interpreter', 'latex')
